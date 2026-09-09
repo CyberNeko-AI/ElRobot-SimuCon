@@ -1,20 +1,15 @@
-pub mod protocol;
+//! Standalone ST3215 serial-bus servo driver + auto-calibration.
+//!
+//! Decoupled from the norma-core station framework; only depends on `tokio`,
+//! `tokio-serial`, `bytes` and `log`.
+
+pub mod auto_calibrate;
+pub mod calibrate;
+pub mod driver;
 pub mod presets;
+pub mod protocol;
 
-pub mod st3215_proto {
-    include!("proto/st3215.rs");
-}
-
-mod driver;
-mod port;
-mod port_meta;
-
-mod calibrate;
-mod state;
-mod auto_calibrate;
+pub use driver::St3215;
 
 #[cfg(test)]
 mod calibrate_test;
-mod errors;
-
-pub use driver::{start_st3215_driver, St3215Driver};

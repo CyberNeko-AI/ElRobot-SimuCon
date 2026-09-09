@@ -1,299 +1,295 @@
-use super::port::St3215Port;
-use super::state::ST3215BusCommunicator;
-use crate::protocol;
-use crate::st3215_proto::{
-    Command, RxEnvelope, St3215Bus as St3215BusProto, St3215SignalType, TxEnvelope,
-};
-use log::{debug, error, info, warn};
-use normfs::NormFS;
-use prost::Message;
-use station_iface::iface_proto::commands;
-use station_iface::iface_proto::drivers::{self, QueueDataType};
-use station_iface::StationEngine;
-use std::collections::HashSet;
-use std::sync::Arc;
+//! Standalone ST3215 serial-bus servo driver.
+//!
+//! Wraps a [`tokio_serial::SerialStream`] with the ST3215 request/response
+//! protocol and convenience helpers for RAM / EEPROM access plus the
+//! calibration freeze/reset sequences. Decoupled from the norma-core station
+//! framework — only `tokio`, `tokio-serial`, `bytes` and `log` are used.
+
 use std::time::Duration;
-use tokio::sync::RwLock;
-use tokio::time::interval;
-use tokio_serial::{available_ports, SerialPortInfo, SerialPortType};
 
-pub const RX_QUEUE_ID: &str = "st3215/rx";
-pub const TX_QUEUE_ID: &str = "st3215/tx";
-pub const META_QUEUE_ID: &str = "st3215/meta";
-pub const INFERENCE_QUEUE_ID: &str = "st3215/inference";
+use bytes::Bytes;
+use log::warn;
+use tokio::io::AsyncReadExt;
+use tokio_serial::SerialPortBuilderExt;
 
-pub struct St3215Driver {
-    com: Arc<ST3215BusCommunicator>,
-    ports: Arc<RwLock<HashSet<String>>>,
+use crate::presets::*;
+use crate::protocol::{self, EepromRegister, Error, RamRegister, ST3215Request, ST3215Response};
+
+pub const COMMAND_TIMEOUT_MS: u64 = 20;
+pub const MAX_MOTORS_CNT: u8 = 8;
+
+pub struct St3215 {
+    port: tokio_serial::SerialStream,
 }
 
-impl St3215Driver {
-    pub async fn new<T: StationEngine>(
-        normfs: Arc<NormFS>,
-        station_engine: Arc<T>,
-    ) -> Result<Self, Box<dyn std::error::Error>> {
-        let ports = Arc::new(RwLock::new(HashSet::new()));
+impl St3215 {
+    /// Open a serial port at the given baud rate.
+    pub fn open(path: &str, baud_rate: u32) -> std::io::Result<Self> {
+        let port = tokio_serial::new(path, baud_rate).open_native_async()?;
+        Ok(Self { port })
+    }
 
-        let rx_queue_id = normfs.resolve(RX_QUEUE_ID);
-        let tx_queue_id = normfs.resolve(TX_QUEUE_ID);
-        let meta_queue_id = normfs.resolve(META_QUEUE_ID);
-        let inference_queue_id = normfs.resolve(INFERENCE_QUEUE_ID);
+    /// Open at the default 1 Mbps bus rate.
+    pub fn open_default(path: &str) -> std::io::Result<Self> {
+        Self::open(path, protocol::SUPPORTED_BAUD_RATES[0])
+    }
 
-        normfs.ensure_queue_exists_for_write(&rx_queue_id).await?;
-        normfs.ensure_queue_exists_for_write(&tx_queue_id).await?;
-        normfs.ensure_queue_exists_for_write(&meta_queue_id).await?;
-        normfs.ensure_queue_exists_for_write(&inference_queue_id).await?;
+    pub fn port(&mut self) -> &mut tokio_serial::SerialStream {
+        &mut self.port
+    }
 
-        station_engine.register_queue(
-            &rx_queue_id,
-            drivers::QueueDataType::QdtSt3215SerialRx,
-            vec![],
-        );
-        station_engine.register_queue(&tx_queue_id, QueueDataType::QdtSt3215SerialTx, vec![]);
-        station_engine.register_queue(&meta_queue_id, QueueDataType::QdtSt3215Meta, vec![]);
-        station_engine.register_queue(
-            &inference_queue_id,
-            QueueDataType::QdtSt3215Inference,
-            vec![],
-        );
+    // ---- raw protocol commands -------------------------------------------
 
-        let com = Arc::new(ST3215BusCommunicator::new(
-            normfs.clone(),
-            rx_queue_id,
-            tx_queue_id.clone(),
-            meta_queue_id.clone(),
-            inference_queue_id,
-        ));
+    pub async fn ping(&mut self, motor: u8) -> Result<(), Error> {
+        ST3215Request::Ping { motor }
+            .async_readwrite(&mut self.port, COMMAND_TIMEOUT_MS)
+            .await?;
+        Ok(())
+    }
 
-        let com4commands = com.clone();
-        let commands_queue_id = normfs.resolve("commands");
-        normfs.subscribe(
-            &commands_queue_id,
-            Box::new(move |entries: &[(normfs::UintN, bytes::Bytes)]| {
-                for (_, data) in entries {
-                    if let Ok(pack) = commands::StationCommandsPack::decode(data.as_ref()) {
-                        log::debug!("Received command: {:?}", pack.pack_id);
-                        for cmd in &pack.commands {
-                            if cmd.r#type() != drivers::StationCommandType::StcSt3215Command {
-                                continue;
-                            }
+    pub async fn read(&mut self, motor: u8, address: u8, length: u8) -> Result<Bytes, Error> {
+        let req = ST3215Request::Read { motor, address, length };
+        match req.async_readwrite(&mut self.port, COMMAND_TIMEOUT_MS).await? {
+            ST3215Response::Read { data, .. } => Ok(data),
+            _ => unreachable!("validated by protocol"),
+        }
+    }
 
-                            let command = Command::decode(cmd.body.clone()).map_err(|e| {
-                                error!("Failed to decode ST3215 command: {}", e);
-                            });
-                            if command.is_err() {
-                                continue;
-                            }
-                            let command = command.unwrap();
+    pub async fn write(&mut self, motor: u8, address: u8, data: &[u8]) -> Result<(), Error> {
+        ST3215Request::Write { motor, address, data: Bytes::copy_from_slice(data) }
+            .async_readwrite(&mut self.port, COMMAND_TIMEOUT_MS)
+            .await?;
+        Ok(())
+    }
 
-                            let envelope = TxEnvelope {
-                                command_id: cmd.command_id.clone(),
-                                monotonic_stamp_ns: systime::get_monotonic_stamp_ns(),
-                                local_stamp_ns: systime::get_local_stamp_ns(),
-                                app_start_id: systime::get_app_start_id(),
-                                target_bus_serial: command.target_bus_serial,
-                                action: command.action,
-                                write: command.write,
-                                reg_write: command.reg_write,
-                                reset: command.reset,
-                                reset_calibration: command.reset_calibration,
-                                freeze_calibration: command.freeze_calibration,
-                                auto_calibrate: command.auto_calibrate,
-                                stop_auto_calibrate: command.stop_auto_calibrate,
-                                sync_write: command.sync_write,
-                            };
+    pub async fn reg_write(&mut self, motor: u8, address: u8, data: &[u8]) -> Result<(), Error> {
+        ST3215Request::RegWrite { motor, address, data: Bytes::copy_from_slice(data) }
+            .async_readwrite(&mut self.port, COMMAND_TIMEOUT_MS)
+            .await?;
+        Ok(())
+    }
 
-                            if let Err(e) = com4commands.send_tx(&envelope) {
-                                error!("Failed to send ST3215 command to tx queue: {}", e);
-                            }
-                        }
-                    }
+    pub async fn action(&mut self, motor: u8) -> Result<(), Error> {
+        ST3215Request::Action { motor }
+            .async_readwrite(&mut self.port, COMMAND_TIMEOUT_MS)
+            .await?;
+        Ok(())
+    }
+
+    pub async fn reset(&mut self, motor: u8) -> Result<(), Error> {
+        ST3215Request::Reset { motor }
+            .async_readwrite(&mut self.port, COMMAND_TIMEOUT_MS)
+            .await?;
+        Ok(())
+    }
+
+    pub async fn sync_write(&mut self, address: u8, data: Vec<(u8, Vec<u8>)>) -> Result<(), Error> {
+        let data: Vec<(u8, Bytes)> =
+            data.into_iter().map(|(id, d)| (id, Bytes::from(d))).collect();
+        ST3215Request::SyncWrite { address, data }
+            .async_write(&mut self.port, COMMAND_TIMEOUT_MS)
+            .await
+    }
+
+    // ---- RAM convenience ---------------------------------------------------
+
+    pub async fn set_torque(&mut self, motor: u8, enable: bool) -> Result<(), Error> {
+        self.write(motor, RamRegister::TorqueEnable.address(), &[enable as u8]).await
+    }
+
+    pub async fn set_position(&mut self, motor: u8, position: u16) -> Result<(), Error> {
+        self.write(motor, RamRegister::GoalPosition.address(), &position.to_le_bytes()).await
+    }
+
+    pub async fn set_goal_speed(&mut self, motor: u8, speed: u16) -> Result<(), Error> {
+        self.write(motor, RamRegister::GoalSpeed.address(), &speed.to_le_bytes()).await
+    }
+
+    pub async fn set_accel(&mut self, motor: u8, accel: u8) -> Result<(), Error> {
+        self.write(motor, RamRegister::Acc.address(), &[accel]).await
+    }
+
+    pub async fn set_torque_limit(&mut self, motor: u8, limit: u16) -> Result<(), Error> {
+        self.write(motor, RamRegister::TorqueLimit.address(), &limit.to_le_bytes()).await
+    }
+
+    pub async fn read_position(&mut self, motor: u8) -> Result<u16, Error> {
+        let data = self.read(motor, RamRegister::PresentPosition.address(), 2).await?;
+        Ok(protocol::get_motor_position(&data))
+    }
+
+    pub async fn read_velocity(&mut self, motor: u8) -> Result<u16, Error> {
+        let data = self.read(motor, RamRegister::PresentSpeed.address(), 2).await?;
+        Ok(protocol::get_motor_velocity(&data))
+    }
+
+    pub async fn read_load(&mut self, motor: u8) -> Result<u16, Error> {
+        let data = self.read(motor, RamRegister::PresentLoad.address(), 2).await?;
+        Ok(u16::from_le_bytes([data[0], data[1]]))
+    }
+
+    pub async fn read_current(&mut self, motor: u8) -> Result<u16, Error> {
+        let data = self.read(motor, RamRegister::PresentCurrent.address(), 2).await?;
+        Ok(protocol::get_motor_current(&data))
+    }
+
+    pub async fn read_voltage(&mut self, motor: u8) -> Result<u8, Error> {
+        let data = self.read(motor, RamRegister::PresentVoltage.address(), 1).await?;
+        Ok(data[0])
+    }
+
+    pub async fn read_temperature(&mut self, motor: u8) -> Result<u8, Error> {
+        let data = self.read(motor, RamRegister::PresentTemperature.address(), 1).await?;
+        Ok(data[0])
+    }
+
+    pub async fn is_moving(&mut self, motor: u8) -> Result<bool, Error> {
+        let data = self.read(motor, RamRegister::Moving.address(), 1).await?;
+        Ok(data[0] != 0)
+    }
+
+    // ---- EEPROM access -----------------------------------------------------
+
+    async fn unlock_eeprom(&mut self, motor: u8) -> Result<(), Error> {
+        self.write(motor, RamRegister::Lock.address(), &[0]).await
+    }
+
+    async fn lock_eeprom(&mut self, motor: u8) -> Result<(), Error> {
+        self.write(motor, RamRegister::Lock.address(), &[1]).await
+    }
+
+    pub async fn read_eeprom(&mut self, motor: u8, address: u8, length: u8) -> Result<Bytes, Error> {
+        self.read(motor, address, length).await
+    }
+
+    /// EEPROM write: unlock -> reg_write -> action -> lock.
+    pub async fn write_eeprom(&mut self, motor: u8, address: u8, data: &[u8]) -> Result<(), Error> {
+        self.unlock_eeprom(motor).await?;
+        self.reg_write(motor, address, data).await?;
+        self.action(motor).await?;
+        self.lock_eeprom(motor).await
+    }
+
+    /// EEPROM write with read-back verification and retries.
+    pub async fn write_eeprom_verified(
+        &mut self,
+        motor: u8,
+        address: u8,
+        data: &[u8],
+    ) -> Result<bool, Error> {
+        const MAX_RETRIES: u8 = 5;
+        for attempt in 1..=MAX_RETRIES {
+            self.write_eeprom(motor, address, data).await?;
+            match self.read_eeprom(motor, address, data.len() as u8).await {
+                Ok(readback) if readback.as_ref() == data => return Ok(true),
+                Ok(readback) => {
+                    warn!(
+                        "EEPROM verify mismatch motor {}: 0x{:02X} expected {:02x?} got {:02x?} (attempt {}/{})",
+                        motor, address, data, readback.as_ref(), attempt, MAX_RETRIES
+                    );
                 }
-                true
-            }),
-        )?;
-
-        info!("Started ST3215 bus");
-
-        let bus = Self {
-            com,
-            ports: ports.clone(),
-        };
-
-        bus.start_worker();
-        Ok(bus)
-    }
-
-    fn start_worker(&self) {
-        let ports = self.ports.clone();
-        let com = self.com.clone();
-
-        tokio::spawn(async move {
-            let mut scan_interval = interval(Duration::from_secs(1));
-            loop {
-                Self::scan_and_update_ports(&com, &ports).await;
-                scan_interval.tick().await;
-            }
-        });
-    }
-
-    async fn scan_and_update_ports(
-        com: &Arc<ST3215BusCommunicator>,
-        ports: &Arc<RwLock<HashSet<String>>>,
-    ) {
-        match available_ports() {
-            Ok(found_ports) => {
-                let st3215_ports: Vec<SerialPortInfo> = found_ports
-                    .into_iter()
-                    .filter(|port| Self::is_st3215_device(port) && Self::can_use_port(port))
-                    .collect();
-
-                let mut ports_guard = ports.write().await;
-
-                for port_info in st3215_ports {
-                    let port_name = port_info.port_name.clone();
-
-                    if !ports_guard.contains(&port_name) {
-                        info!("New ST3215 port detected: {}", port_name);
-                        let bus_info = Self::create_bus_info(&port_info);
-
-                        match St3215Port::new(port_info.clone(), com.clone(), bus_info.clone())
-                            .await
-                        {
-                            Ok(mut port) => {
-                                Self::send_bus_connect_signal(com, &bus_info);
-                                ports_guard.insert(port_name.clone());
-                                info!("Added ST3215 port to management: {}", port_name);
-
-                                let port_name_clone = port_name.clone();
-                                let bus_info_clone = bus_info.clone();
-                                let ports_clone = ports.clone();
-                                let com_clone = com.clone();
-
-                                debug!("Spawning worker for ST3215 port: {}", port_name_clone);
-                                tokio::spawn(async move {
-                                    debug!(
-                                        "Worker task started for ST3215 port: {}",
-                                        port_name_clone
-                                    );
-
-                                    debug!("Opening port: {}", port_name_clone);
-                                    match port.open().await {
-                                        Ok(_) => {
-                                            Self::send_bus_disconnect_signal(
-                                                &com_clone,
-                                                &bus_info_clone,
-                                            );
-                                        }
-                                        Err(e) => {
-                                            warn!(
-                                                "Failed to open ST3215 port {}: {}",
-                                                port_name_clone, e
-                                            );
-                                        }
-                                    }
-
-                                    ports_clone.write().await.remove(&port_name_clone);
-                                    info!(
-                                        "ST3215 port {} disconnected and removed from management",
-                                        port_name_clone
-                                    );
-                                });
-                            }
-                            Err(e) => {
-                                error!("Failed to create ST3215 port {}: {}", port_name, e);
-                            }
-                        }
-                    }
+                Err(e) => {
+                    warn!(
+                        "EEPROM verify read failed motor {}: 0x{:02X}: {} (attempt {}/{})",
+                        motor, address, e, attempt, MAX_RETRIES
+                    );
+                    self.drain().await;
                 }
             }
-            Err(e) => {
-                error!("Failed to scan serial ports: {}", e);
-            }
         }
+        Ok(false)
     }
 
-    fn is_st3215_device(port_info: &SerialPortInfo) -> bool {
-        match &port_info.port_type {
-            SerialPortType::UsbPort(usb_info) => {
-                protocol::is_st3215_usbdevice(usb_info.vid, usb_info.pid)
-            }
-            _ => false,
-        }
+    // ---- calibration freeze / reset ---------------------------------------
+
+    /// Reset a motor's calibration: unlock EEPROM, reset, zero the position
+    /// offset, lock EEPROM.
+    pub async fn reset_calibration(&mut self, motor: u8) -> Result<bool, Error> {
+        self.unlock_eeprom(motor).await?;
+        self.reset(motor).await?;
+        tokio::time::sleep(Duration::from_millis(100)).await;
+        let verified =
+            self.write_eeprom_verified(motor, EepromRegister::Offset.address(), &[0, 0]).await?;
+        self.lock_eeprom(motor).await?;
+        Ok(verified)
     }
 
-    fn can_use_port(port_info: &SerialPortInfo) -> bool {
-        if let SerialPortType::UsbPort(_) = &port_info.port_type {
-            #[cfg(target_os = "macos")]
-            {
-                if port_info.port_name.starts_with("/dev/cu.") {
-                    return false;
+    /// Persist calibration for a motor: writes the position-offset correction
+    /// (`midpoint - 2048`), the PID coefficients, position-control mode and
+    /// default torque/current/accel settings to EEPROM.
+    pub async fn freeze_calibration(
+        &mut self,
+        motor: u8,
+        midpoint: u16,
+        motor_count: u8,
+    ) -> Result<bool, Error> {
+        let mut correction = midpoint as i16 - 2048;
+        if correction > 2047 {
+            correction -= 4096;
+        } else if correction < -2047 {
+            correction += 4096;
+        }
+        correction = correction.clamp(-2047, 2047);
+
+        let pid = pid_config_for_motor_count(motor_count);
+
+        self.unlock_eeprom(motor).await?;
+
+        let mut ok = true;
+        ok &= self.write_eeprom_verified(motor, EepromRegister::Mode.address(), &[0]).await?;
+        ok &= self.write_eeprom_verified(motor, EepromRegister::PCoef.address(), &[pid.p]).await?;
+        ok &= self.write_eeprom_verified(motor, EepromRegister::ICoef.address(), &[pid.i]).await?;
+        ok &= self.write_eeprom_verified(motor, EepromRegister::DCoef.address(), &[pid.d]).await?;
+        ok &= self.write_eeprom_verified(motor, EepromRegister::ReturnDelay.address(), &[0]).await?;
+        ok &= self
+            .write_eeprom_verified(motor, EepromRegister::MaxTorque.address(), &DEFAULT_MAX_TORQUE.to_le_bytes())
+            .await?;
+        ok &= self
+            .write_eeprom_verified(motor, EepromRegister::ProtectionCurrent.address(), &DEFAULT_PROTECTION_CURRENT.to_le_bytes())
+            .await?;
+        ok &= self
+            .write_eeprom_verified(motor, EepromRegister::OverloadTorque.address(), &[DEFAULT_OVERLOAD_TORQUE])
+            .await?;
+        ok &= self
+            .write_eeprom_verified(motor, EepromRegister::Offset.address(), &correction.to_le_bytes())
+            .await?;
+
+        // Acceleration is RAM-only (some firmware clamps it); best-effort.
+        let _ = self.set_accel(motor, DEFAULT_ACCEL).await;
+
+        self.lock_eeprom(motor).await?;
+        self.action(motor).await?;
+        Ok(ok)
+    }
+
+    // ---- utilities ----------------------------------------------------------
+
+    /// Drain stale bytes left in the serial buffer (e.g. after a failed request).
+    pub async fn drain(&mut self) {
+        let mut buf = [0u8; 256];
+        let mut total = 0usize;
+        loop {
+            match tokio::time::timeout(Duration::from_millis(5), self.port.read(&mut buf)).await {
+                Ok(Ok(n)) if n > 0 => {
+                    total += n;
+                    continue;
                 }
+                _ => break,
             }
-            true
-        } else {
-            false
+        }
+        if total > 0 {
+            warn!("Drained {} stale bytes from serial port", total);
         }
     }
 
-    fn create_bus_info(port_info: &SerialPortInfo) -> St3215BusProto {
-        let (vid, pid, serial_number, manufacturer, product) = match &port_info.port_type {
-            SerialPortType::UsbPort(usb_info) => (
-                usb_info.vid as u32,
-                usb_info.pid as u32,
-                usb_info.serial_number.clone().unwrap_or_default(),
-                usb_info.manufacturer.clone().unwrap_or_default(),
-                usb_info.product.clone().unwrap_or_default(),
-            ),
-            _ => (0, 0, String::new(), String::new(), String::new()),
-        };
-
-        St3215BusProto {
-            port_name: port_info.port_name.clone(),
-            vid,
-            pid,
-            serial_number,
-            manufacturer,
-            product,
-            port_baud_rate: protocol::SUPPORTED_BAUD_RATES[0],
+    /// Scan the bus for motors with IDs `1..=max_id`.
+    pub async fn scan(&mut self, max_id: u8) -> Vec<u8> {
+        let mut found = Vec::new();
+        for motor in 1..=max_id {
+            if self.ping(motor).await.is_ok() {
+                found.push(motor);
+            }
         }
+        found
     }
-
-    fn send_bus_connect_signal(comm: &ST3215BusCommunicator, bus_info: &St3215BusProto) {
-        let envelope = RxEnvelope {
-            monotonic_stamp_ns: systime::get_monotonic_stamp_ns(),
-            local_stamp_ns: systime::get_local_stamp_ns(),
-            app_start_id: systime::get_app_start_id(),
-            signal_type: St3215SignalType::St3215BusConnect as i32,
-            bus: Some(bus_info.clone()),
-            ..Default::default()
-        };
-
-        if let Err(e) = comm.send_rx(&envelope) {
-            error!("Failed to send ST3215 bus connect signal: {}", e);
-        }
-    }
-
-    fn send_bus_disconnect_signal(comm: &ST3215BusCommunicator, bus_info: &St3215BusProto) {
-        let envelope = RxEnvelope {
-            monotonic_stamp_ns: systime::get_monotonic_stamp_ns(),
-            local_stamp_ns: systime::get_local_stamp_ns(),
-            app_start_id: systime::get_app_start_id(),
-            signal_type: St3215SignalType::St3215BusDisconnect as i32,
-            bus: Some(bus_info.clone()),
-            ..Default::default()
-        };
-
-        if let Err(e) = comm.send_rx(&envelope) {
-            error!("Failed to send ST3215 bus disconnect signal: {}", e);
-        }
-    }
-}
-
-pub async fn start_st3215_driver<T: StationEngine>(
-    normfs: Arc<NormFS>,
-    station_engine: Arc<T>,
-) -> Result<Arc<St3215Driver>, Box<dyn std::error::Error>> {
-    let bus = St3215Driver::new(normfs, station_engine).await?;
-    Ok(Arc::new(bus))
 }

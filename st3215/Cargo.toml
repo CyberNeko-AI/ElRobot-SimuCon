@@ -1,31 +1,20 @@
 [package]
 name = "st3215"
-version.workspace = true
+version = "0.1.0"
 edition = "2021"
-authors = ["Alex Batsuev <ab@elrobot.eu>"]
-description = "ST3215 servo motor control library and CLI tool"
-repository = "https://github.com/norma_core/norma_core/"
+description = "Standalone ST3215 serial-bus servo driver and auto-calibration (decoupled from norma-core)"
 license = "MIT OR Apache-2.0"
-readme = "README.md"
 keywords = ["servo", "motor", "robotics", "st3215", "serial"]
 categories = ["hardware-support", "command-line-utilities"]
 
-[features]
-default = []
-
 [dependencies]
-tokio = { workspace = true }
-normfs = { workspace = true }
-systime = { path = "../../station/shared/systime-rs" }
-station_iface = { path = "../../station/shared/station-iface" }
-prost = { workspace = true }
-bytes = { workspace = true }
-parking_lot = { workspace = true }
-log = { workspace = true }
-tokio-serial = { workspace = true }
+bytes = "1"
+log = "0.4"
+tokio = { version = "1", features = ["rt-multi-thread", "time", "io-util", "macros"] }
+tokio-serial = "5"
 
-[lib]
-path = "src/lib.rs"
+[dev-dependencies]
+env_logger = "0.11"
 
-[build-dependencies]
-prost-build = { workspace = true }
+[[example]]
+name = "demo"

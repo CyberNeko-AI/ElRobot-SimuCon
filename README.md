@@ -2,7 +2,7 @@
 
 自研 ElRobot 机械臂（3D 打印 + ST3215 C001 数字舵机）的独立仓库。内容提取自
 [norma-core](https://github.com/norma-core/norma-core) 框架，只保留本机所需的
-硬件设计文件、MuJoCo 仿真，以及 ST3215 舵机驱动源码（作参考）。
+硬件设计文件、MuJoCo 仿真，以及**已解耦、可独立编译**的 ST3215 舵机驱动与标定程序。
 
 ## 目录结构
 
@@ -11,7 +11,7 @@
 | `elrobot/` | 跟随臂/主臂硬件：STL/STEP 打印件、装配手册 PDF、URDF、README、许可证 |
 | `elrobot/simulation/` | MuJoCo 仿真（`build_mjcf.py` 生成场景、`controller.py` 伺服模型、`control_ui.py` 浏览器控制、`demo.py` 等） |
 | `pgripper/` | PGripper 夹爪（打印件、STEP/STL、手册 PDF、许可证） |
-| `st3215/` | ST3215 舵机 Rust 驱动源码（参考，无法独立编译，见下） |
+| `st3215/` | ST3215 舵机 Rust 驱动 + 自动标定（独立 crate，已解耦） |
 
 ## 来源与许可
 
@@ -23,16 +23,20 @@
 
 ## 关于 st3215 驱动
 
-`st3215/` 是从上游 monorepo 提取的 Rust crate 源码，其 `Cargo.toml` 依赖上游的
-共享 crate（`normfs`、`station_iface`、`systime-rs` 以及 protobuf 定义），因此
-**单独无法编译**。此处仅作协议与标定逻辑的参考，重点可看：
+`st3215/` 是从上游 monorepo 提取后**解耦成独立 crate** 的 Rust 驱动 + 标定程序，
+只依赖 `tokio` / `tokio-serial` / `bytes` / `log`，可独立编译：
 
-- `st3215/src/protocol/packet.rs`、`units.rs`、`devices.rs` —— 串行总线协议与单位换算
-- `st3215/src/calibrate.rs`、`src/auto_calibrate/elrobot.rs` —— 标定 / ElRobot 自动标定
-- `st3215/src/driver.rs`、`port.rs` —— 端口与驱动逻辑
+```bash
+cd st3215
+cargo build                 # 编译
+cargo test                  # 运行协议/弧段计算单元测试
+cargo run --example demo -- /dev/tty.usbserial-XXXX [--calibrate]
+```
 
-如需独立驱动，可据此改写为 Python 或嵌入式实现（总线为 1 Mbps 半双工 TTL 串行，
-12 bit 位置分辨率，详见 `elrobot/simulation/MEASUREMENTS.md` §3）。
+提供：串口驱动（RAM/EEPROM 读写、`set_position`/`read_position`/`read_velocity`/
+`read_load` 等）、ElRobot 8 电机自动标定（扫到堵转定行程、算弧段、写 Offset/PID
+固化到 EEPROM）。详见 `st3215/README.md`。与上游相比去掉了 station 框架的命令/
+状态通道（改为直接串口读写），并移除了 SO101 标定，仅保留 ElRobot。
 
 ## 仿真快速开始
 

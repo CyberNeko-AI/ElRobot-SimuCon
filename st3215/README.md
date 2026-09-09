@@ -80,6 +80,35 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 > 注意：标定会**写舵机 EEPROM**，首次上电前请确认机械臂可自由运动、限位不会
 > 损坏结构。`stop` 标志可在中途触发，触发后所有电机关闭力矩（臂变软）。
 
+## Python 绑定（PyO3）
+
+用 `maturin` 构建 Python 扩展（`abi3`，Python ≥ 3.8 通用）：
+
+```bash
+pip install maturin
+maturin develop --release      # 直接装进当前虚拟环境
+# 或产出 wheel：
+maturin build --release        # -> target/wheels/st3215-*.whl
+pip install target/wheels/st3215-*.whl
+```
+
+```python
+from st3215 import St3215
+
+d = St3215("/dev/tty.usbserial-XXXX")      # 1 Mbps
+print(d.scan(8))                           # 发现 1..=8 号电机
+d.set_torque(1, True)
+d.set_position(1, 2048)
+print(d.read_position(1), d.read_velocity(1), d.read_load(1))
+
+d.auto_calibrate_elrobot()                 # 8 电机自动标定（写 EEPROM）
+# d.stop_calibration()                     # 从另一线程中止
+```
+
+绑定层是把 Rust 的每个异步方法用「单线程 tokio runtime + `block_on`」包装成
+**同步阻塞调用**——串口命令都是 ~0.1–0.5 ms 级，20–100 Hz 的控制回路足够快，
+且无需 asyncio。
+
 ## 与上游的差异
 
 - 去掉了 station 框架的命令/状态通道（normfs 队列、protobuf `TxEnvelope`），

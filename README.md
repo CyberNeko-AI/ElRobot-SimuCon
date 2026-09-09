@@ -35,8 +35,25 @@ cargo run --example demo -- /dev/tty.usbserial-XXXX [--calibrate]
 
 提供：串口驱动（RAM/EEPROM 读写、`set_position`/`read_position`/`read_velocity`/
 `read_load` 等）、ElRobot 8 电机自动标定（扫到堵转定行程、算弧段、写 Offset/PID
-固化到 EEPROM）。详见 `st3215/README.md`。与上游相比去掉了 station 框架的命令/
-状态通道（改为直接串口读写），并移除了 SO101 标定，仅保留 ElRobot。
+固化到 EEPROM）。与上游相比去掉了 station 框架的命令/状态通道（改为直接串口读写），
+并移除了 SO101 标定，仅保留 ElRobot。
+
+另有 **PyO3 Python 绑定**（`abi3`，Python ≥ 3.8 通用）：
+
+```bash
+cd st3215
+pip install maturin
+maturin develop --release
+```
+
+```python
+from st3215 import St3215
+d = St3215("/dev/tty.usbserial-XXXX")
+d.set_position(1, 2048)
+d.auto_calibrate_elrobot()
+```
+
+详见 `st3215/README.md`。
 
 ## 仿真快速开始
 

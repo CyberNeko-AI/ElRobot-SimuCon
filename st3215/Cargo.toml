@@ -7,9 +7,18 @@ license = "MIT OR Apache-2.0"
 keywords = ["servo", "motor", "robotics", "st3215", "serial"]
 categories = ["hardware-support", "command-line-utilities"]
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+# Enable the PyO3 Python bindings (maturin enables this via `--features python`).
+python = ["dep:pyo3", "pyo3/extension-module"]
+
 [dependencies]
 bytes = "1"
 log = "0.4"
+pyo3 = { version = "0.23", features = ["abi3-py38"], optional = true }
 tokio = { version = "1", features = ["rt-multi-thread", "time", "io-util", "macros"] }
 tokio-serial = "5"
 

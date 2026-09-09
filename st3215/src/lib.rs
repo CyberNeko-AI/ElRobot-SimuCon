@@ -11,5 +11,8 @@ pub mod protocol;
 
 pub use driver::St3215;
 
+#[cfg(feature = "python")]
+mod py;
+
 #[cfg(test)]
 mod calibrate_test;

@@ -1,0 +1,175 @@
+<mujoco model="elrobot_follower">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+  <option gravity="0 0 -9.81" timestep="0.002" integrator="implicit"/>
+
+  <visual>
+    <global offwidth="1280" offheight="960"/>
+  </visual>
+
+  <asset>
+    <texture name="texplane" type="2d" builtin="checker" rgb1="0.82 0.82 0.84"
+             rgb2="0.72 0.72 0.74" width="512" height="512"/>
+    <material name="floor" texture="texplane" texrepeat="6 6" reflectance="0.05"/>
+    <mesh name="Gripper_Base_v1_1" file="Gripper_Base_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Gripper_Gear_v1_1" file="Gripper_Gear_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Gripper_Jaw_01_v1_1" file="Gripper_Jaw_01_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Gripper_Jaw_02_v1_1" file="Gripper_Jaw_02_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Joint_01_1" file="Joint_01_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Joint_02_1" file="Joint_02_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Joint_03_v1_1" file="Joint_03_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Joint_04_v1_1" file="Joint_04_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Joint_05_v1_1" file="Joint_05_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Joint_06_v1_1" file="Joint_06_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_1_v1_1" file="ST3215_1_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_2_v1_1" file="ST3215_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_3_v1_1" file="ST3215_3_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_4_v1_1" file="ST3215_4_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_5_v1_1" file="ST3215_5_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_6_v1_1" file="ST3215_6_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_7_v1_1" file="ST3215_7_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ST3215_8_v1_1" file="ST3215_8_v1_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <default>
+    <geom friction="0.4 0.005 0.0001"/>
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="0"/>
+    </default>
+    <default class="collision">
+      <!-- contype=1/conaffinity=0: the arm collides with the floor but its
+           links never collide with each other (the CAD collision meshes
+           interpenetrate at the assembly pose). -->
+      <geom contype="1" conaffinity="0" group="1" rgba="0.6 0.6 0.6 1"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light name="key" pos="0.6 -0.6 0.8" dir="-0.5 0.5 -0.6" diffuse="0.8 0.8 0.8"
+           specular="0.2 0.2 0.2" directional="true" castshadow="true"/>
+    <light name="fill" pos="-0.6 0.4 0.6" diffuse="0.35 0.35 0.38"/>
+
+    <geom name="floor" type="plane" size="1.5 1.5 0.05" pos="0 0 0"
+          material="floor" contype="0" conaffinity="1"/>
+
+    <!-- ElRobot follower arm; base_link is mounted at z=BASE_HEIGHT. -->
+  <body name="base_link" pos="0 0 0.0">
+    <inertial pos="4.153203e-10 0.01308411 0.01955104" mass="0.07734434" fullinertia="4.075974e-05 6.680068e-05 5.774296e-05 0 -0 9.057719e-06"/>
+    <geom class="visual" type="mesh" mesh="base_link" pos="0 0 0" rgba="0.72 0.72 0.74 1.0"/>
+    <geom class="collision" type="mesh" mesh="base_link" pos="0 0 0" rgba="0.7 0.7 0.7 1.0"/>
+    <body name="ST3215_1_v1_1" pos="0 0.007585 0.0315">
+      <inertial pos="4.076347e-06 0.02269016 -0.001423577" mass="0.055" fullinertia="1.379022e-05 6.895112e-06 1.206645e-05 0 0 -0"/>
+      <geom class="visual" type="mesh" mesh="ST3215_1_v1_1" pos="-0 -0.007585 -0.0315" rgba="0.13 0.13 0.14 1.0"/>
+      <geom class="collision" type="mesh" mesh="ST3215_1_v1_1" pos="-0 -0.007585 -0.0315" rgba="0.7 0.7 0.7 1.0"/>
+      <body name="Joint_01_1" pos="0 0.034904 0.017505">
+        <joint name="rev_motor_01" type="hinge" pos="0 0 0" axis="0 -0.008727 0.999962" range="-1.5509 1.5509" limited="true" armature="0.02" damping="0.5"/>
+        <inertial pos="0.0001929336 0.01053544 -0.002903406" mass="0.04079261" fullinertia="2.264694e-05 2.264694e-05 1.132347e-05 0 -0 4.529387e-06"/>
+        <geom class="visual" type="mesh" mesh="Joint_01_1" pos="-0 -0.042489 -0.049005" rgba="0.72 0.72 0.74 1.0"/>
+        <geom class="collision" type="mesh" mesh="Joint_01_1" pos="-0 -0.042489 -0.049005" rgba="0.7 0.7 0.7 1.0"/>
+        <body name="ST3215_2_v1_1" pos="0.000625 -5.8e-05 0.0067">
+          <inertial pos="-0.001423577 -0.0001940729 0.02268943" mass="0.055" fullinertia="1.206645e-05 1.379022e-05 6.895112e-06 0 -0 0"/>
+          <geom class="visual" type="mesh" mesh="ST3215_2_v1_1" pos="-0.000625 -0.042431 -0.055705" rgba="0.13 0.13 0.14 1.0"/>
+          <geom class="collision" type="mesh" mesh="ST3215_2_v1_1" pos="-0.000625 -0.042431 -0.055705" rgba="0.7 0.7 0.7 1.0"/>
+          <body name="Joint_02_1" pos="-0.020293 -0.000308 0.035233">
+            <joint name="rev_motor_02" type="hinge" pos="0 0 0" axis="-0.999962 -7.6e-05 0.008726" range="-1.6122 1.6122" limited="true" armature="0.02" damping="0.5"/>
+            <inertial pos="0.02018729 -0.0003607149 0.04048887" mass="0.04883081" fullinertia="2.716962e-05 3.849029e-05 1.924514e-05 -0 0 0"/>
+            <geom class="visual" type="mesh" mesh="Joint_02_1" pos="0.019668 -0.042123 -0.090938" rgba="0.72 0.72 0.74 1.0"/>
+            <geom class="collision" type="mesh" mesh="Joint_02_1" pos="0.019668 -0.042123 -0.090938" rgba="0.7 0.7 0.7 1.0"/>
+            <body name="ST3215_3_v1_1" pos="0.019863 -0.000487 0.055827">
+              <inertial pos="-0.001225867 -0.0001938389 0.0227006" mass="0.055" fullinertia="1.206645e-05 1.379022e-05 6.895112e-06 0 -0 0"/>
+              <geom class="visual" type="mesh" mesh="ST3215_3_v1_1" pos="-0.000195 -0.041636 -0.146765" rgba="0.13 0.13 0.14 1.0"/>
+              <geom class="collision" type="mesh" mesh="ST3215_3_v1_1" pos="-0.000195 -0.041636 -0.146765" rgba="0.7 0.7 0.7 1.0"/>
+              <body name="Joint_03_v1_1" pos="-0.019985 -0.000309 0.035408">
+                <joint name="rev_motor_03" type="hinge" pos="0 0 0" axis="-0.999848 -0.000152 0.017452" range="-1.761 1.761" limited="true" armature="0.02" damping="0.5"/>
+                <inertial pos="0.02138349 0.002597374 0.02857327" mass="0.04195002" fullinertia="1.245317e-05 2.037791e-05 1.698159e-05 0 -0 -1.132106e-06"/>
+                <geom class="visual" type="mesh" mesh="Joint_03_v1_1" pos="0.01979 -0.041327 -0.182173" rgba="0.72 0.72 0.74 1.0"/>
+                <geom class="collision" type="mesh" mesh="Joint_03_v1_1" pos="0.01979 -0.041327 -0.182173" rgba="0.7 0.7 0.7 1.0"/>
+                <body name="ST3215_4_v1_1" pos="0.021263 0.001933 0.036403">
+                  <inertial pos="-0.001423601 0.0226888 0.0002187699" mass="0.055" fullinertia="1.206645e-05 6.895112e-06 1.379022e-05 -0 0 -0"/>
+                  <geom class="visual" type="mesh" mesh="ST3215_4_v1_1" pos="-0.001473 -0.04326 -0.218576" rgba="0.13 0.13 0.14 1.0"/>
+                  <geom class="collision" type="mesh" mesh="ST3215_4_v1_1" pos="-0.001473 -0.04326 -0.218576" rgba="0.7 0.7 0.7 1.0"/>
+                  <body name="Joint_04_v1_1" pos="-0.02029 0.035229 0.000662">
+                    <joint name="rev_motor_04" type="hinge" pos="0 0 0" axis="-0.99981 0.008574 0.017527" range="-1.7533 1.7533" limited="true" armature="0.02" damping="0.5"/>
+                    <inertial pos="0.0204147 0.04634775 0.0004733774" mass="0.05559072" fullinertia="4.188657e-05 2.377346e-05 5.320726e-05 -0 0 -1.132069e-06"/>
+                    <geom class="visual" type="mesh" mesh="Joint_04_v1_1" pos="0.018817 -0.078489 -0.219238" rgba="0.72 0.72 0.74 1.0"/>
+                    <geom class="collision" type="mesh" mesh="Joint_04_v1_1" pos="0.018817 -0.078489 -0.219238" rgba="0.7 0.7 0.7 1.0"/>
+                    <body name="ST3215_5_v1_1" pos="0.020391 0.065663 -0.010035">
+                      <inertial pos="0.0003830171 -0.001621005 0.02243122" mass="0.055" fullinertia="1.379022e-05 1.206645e-05 6.895112e-06 -0 -0 -0"/>
+                      <geom class="visual" type="mesh" mesh="ST3215_5_v1_1" pos="-0.001574 -0.144152 -0.209203" rgba="0.13 0.13 0.14 1.0"/>
+                      <geom class="collision" type="mesh" mesh="ST3215_5_v1_1" pos="-0.001574 -0.144152 -0.209203" rgba="0.7 0.7 0.7 1.0"/>
+                      <body name="Joint_05_v1_1" pos="0.000323 0.0172 0.010051">
+                        <joint name="rev_motor_05" type="hinge" pos="0 0 0" axis="-0.008573 -0.999963 0.000151" range="-2.62 3.252" limited="true" armature="0.02" damping="0.5"/>
+                        <inertial pos="-0.001451173 0.01488617 0.0002391895" mass="0.01702037" fullinertia="3.397191e-06 5.661985e-06 5.661985e-06 0 0 -0"/>
+                        <geom class="visual" type="mesh" mesh="Joint_05_v1_1" pos="-0.001897 -0.161352 -0.219254" rgba="0.72 0.72 0.74 1.0"/>
+                        <geom class="collision" type="mesh" mesh="Joint_05_v1_1" pos="-0.001897 -0.161352 -0.219254" rgba="0.7 0.7 0.7 1.0"/>
+                        <body name="ST3215_6_v1_1" pos="6.5e-05 0.0075 -1e-06">
+                          <inertial pos="-0.001229254 0.02270121 1.777525e-05" mass="0.055" fullinertia="1.206645e-05 6.895112e-06 1.379022e-05 -0 0 -0"/>
+                          <geom class="visual" type="mesh" mesh="ST3215_6_v1_1" pos="-0.001962 -0.168852 -0.219253" rgba="0.13 0.13 0.14 1.0"/>
+                          <geom class="collision" type="mesh" mesh="ST3215_6_v1_1" pos="-0.001962 -0.168852 -0.219253" rgba="0.7 0.7 0.7 1.0"/>
+                          <body name="Joint_06_v1_1" pos="-0.019988 0.035407 0.000351">
+                            <joint name="rev_motor_06" type="hinge" pos="0 0 0" axis="-0.999697 0.0173 0.017525" range="-1.3775 1.7641" limited="true" armature="0.02" damping="0.5"/>
+                            <inertial pos="0.02043403 0.03197651 0.0003564814" mass="0.0422002" fullinertia="1.811309e-05 1.811309e-05 2.49055e-05 0 0 -0"/>
+                            <geom class="visual" type="mesh" mesh="Joint_06_v1_1" pos="0.018026 -0.204259 -0.219604" rgba="0.72 0.72 0.74 1.0"/>
+                            <geom class="collision" type="mesh" mesh="Joint_06_v1_1" pos="0.018026 -0.204259 -0.219604" rgba="0.7 0.7 0.7 1.0"/>
+                            <body name="ST3215_7_v1_1" pos="0.020478 0.038023 -0.010611">
+                              <inertial pos="0.000373154 -0.001425713 0.02244503" mass="0.055" fullinertia="1.379022e-05 1.206645e-05 6.895112e-06 -0 -0 -0"/>
+                              <geom class="visual" type="mesh" mesh="ST3215_7_v1_1" pos="-0.002452 -0.242282 -0.208993" rgba="0.13 0.13 0.14 1.0"/>
+                              <geom class="collision" type="mesh" mesh="ST3215_7_v1_1" pos="-0.002452 -0.242282 -0.208993" rgba="0.7 0.7 0.7 1.0"/>
+                              <body name="Gripper_Base_v1_1" pos="0.000473 0.017284 0.009899">
+                                <joint name="rev_motor_07" type="hinge" pos="0 0 0" axis="-0.017144 -0.999812 0.009029" range="-3.2014 2.7336" limited="true" armature="0.02" damping="0.5"/>
+                                <inertial pos="0.000560525 0.03191999 -0.0005946932" mass="0.05309669" fullinertia="2.490918e-05 3.283483e-05 3.50993e-05 0 0 -0"/>
+                                <geom class="visual" type="mesh" mesh="Gripper_Base_v1_1" pos="-0.002925 -0.259566 -0.218892" rgba="0.72 0.72 0.74 1.0"/>
+                                <geom class="collision" type="mesh" mesh="Gripper_Base_v1_1" pos="-0.002925 -0.259566 -0.218892" rgba="0.7 0.7 0.7 1.0"/>
+                                <body name="ST3215_8_v1_1" pos="0.000776 0.045242 -0.000409">
+                                  <inertial pos="-0.0005459234 -0.01892611 -0.01220637" mass="0.055" fullinertia="1.379022e-05 1.206645e-05 6.895112e-06 -0 -0 -0"/>
+                                  <geom class="visual" type="mesh" mesh="ST3215_8_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.13 0.13 0.14 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="ST3215_8_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.7 0.7 0.7 1.0"/>
+                                  <body name="Gripper_Gear_v1_1" pos="0 0 0">
+                                    <joint name="rev_motor_08" type="hinge" pos="0 0 0" axis="0.017144 0.999812 -0.009029" range="0 2.2028" limited="true" armature="0.02" damping="0.5"/>
+                                    <inertial pos="6.406693e-05 0.003756401 -3.383421e-05" mass="0.002807865" diaginertia="2.807865e-08 2.807865e-08 2.807865e-08"/>
+                                    <geom class="visual" type="mesh" mesh="Gripper_Gear_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.72 0.72 0.74 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="Gripper_Gear_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.7 0.7 0.7 1.0"/>
+                                  </body>
+                                </body>
+                                <body name="Gripper_Jaw_02_v1_1" pos="0.311734 -0.199648 0.032849">
+                                  <joint name="rev_motor_08_1" type="slide" pos="0 0 0" axis="-0.999697 0.0173 0.017525" range="-0.0255 0" limited="true" armature="0.02" damping="0.5"/>
+                                  <inertial pos="-0.3386809 0.2625922 -0.03031653" mass="0.01414209" fullinertia="5.660378e-06 4.528302e-06 3.396227e-06 0 -0 0"/>
+                                  <geom class="visual" type="mesh" mesh="Gripper_Jaw_02_v1_1" pos="-0.314659 -0.059918 -0.251741" rgba="0.72 0.72 0.74 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="Gripper_Jaw_02_v1_1" pos="-0.314659 -0.059918 -0.251741" rgba="0.7 0.7 0.7 1.0"/>
+                                </body>
+                                <body name="Gripper_Jaw_01_v1_1" pos="0.308573 -0.243367 -0.049391">
+                                  <joint name="rev_motor_08_2" type="slide" pos="0 0 0" axis="-0.999697 0.0173 0.017525" range="0 0.0255" limited="true" armature="0.02" damping="0.5"/>
+                                  <inertial pos="-0.2794418 0.3053158 0.04627968" mass="0.01414209" fullinertia="5.660379e-06 4.528303e-06 3.396227e-06 -0 -0 -0"/>
+                                  <geom class="visual" type="mesh" mesh="Gripper_Jaw_01_v1_1" pos="-0.311498 -0.016199 -0.171401" rgba="0.72 0.72 0.74 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="Gripper_Jaw_01_v1_1" pos="-0.311498 -0.016199 -0.171401" rgba="0.7 0.7 0.7 1.0"/>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+  </worldbody>
+
+  <actuator>
+    <position name="rev_motor_01" joint="rev_motor_01" kp="200" forcerange="-1.91 1.91" ctrlrange="-1.5509 1.5509"/>
+    <position name="rev_motor_02" joint="rev_motor_02" kp="200" forcerange="-1.91 1.91" ctrlrange="-1.6122 1.6122"/>
+    <position name="rev_motor_03" joint="rev_motor_03" kp="200" forcerange="-1.91 1.91" ctrlrange="-1.761 1.761"/>
+    <position name="rev_motor_04" joint="rev_motor_04" kp="200" forcerange="-1.91 1.91" ctrlrange="-1.7533 1.7533"/>
+    <position name="rev_motor_05" joint="rev_motor_05" kp="200" forcerange="-1.91 1.91" ctrlrange="-2.62 3.252"/>
+    <position name="rev_motor_06" joint="rev_motor_06" kp="200" forcerange="-1.91 1.91" ctrlrange="-1.3775 1.7641"/>
+    <position name="rev_motor_07" joint="rev_motor_07" kp="200" forcerange="-1.91 1.91" ctrlrange="-3.2014 2.7336"/>
+    <position name="rev_motor_08" joint="rev_motor_08" kp="200" forcerange="-1.91 1.91" ctrlrange="0 2.2028"/>
+    <position name="rev_motor_08_1" joint="rev_motor_08_1" kp="3000" forcerange="-166.0 166.0" ctrlrange="-0.0255 0"/>
+    <position name="rev_motor_08_2" joint="rev_motor_08_2" kp="3000" forcerange="-166.0 166.0" ctrlrange="0 0.0255"/>
+  </actuator>
+</mujoco>

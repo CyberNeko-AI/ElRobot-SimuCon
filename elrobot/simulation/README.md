@@ -76,6 +76,13 @@ mjpython control_ui.py --viewer
   gripper jaws are rack-pinion followers: they mirror the gear's ACTUAL angle.
 - **Masses** — printed parts use PLA at 1.20 g/cm³ (computed from mesh volumes),
   the 8 ST3215 servos use 55 g each; total ≈ 0.85 kg.
+- **Grasp test block** — a 3 cm / 50 g free cube (`BLOCK_POS/SIZE/MASS`) sits in
+  front of the arm; it collides with the gripper and the floor. Its friction
+  plus the gripper jaws' friction is `GRIP_FRICTION = 3.0` (nominal), which
+  stands in for a rubber gripper pad: MuJoCo combines the two contacting geoms'
+  friction into a lower effective value (~1.5), and the real pad material is
+  still to be measured. The web UI has a **重置方块 (Block)** button that returns
+  the cube to its initial pose after it is thrown.
 - **Self-collision / collision geometry** — the gripper parts (base / gear / two
   jaws) now use convex-decomposed collision meshes (V-HACD OBJ pieces from
   `pgripper/MuJoCo_collision`, 268 pieces total), aligned to the visual STLs to

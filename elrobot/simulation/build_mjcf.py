@@ -59,7 +59,11 @@ GRIPPER_COLLISION = {
 BLOCK_POS = "0 0.30 0.03"            # initial center (m); drops onto the floor
 BLOCK_SIZE = "0.015 0.015 0.015"     # half-extents -> 3 cm cube
 BLOCK_MASS = 0.05                    # kg
-GRIP_FRICTION = "2.0 0.1 0.001"      # (sliding, torsional, rolling) grippy pads
+# (sliding, torsional, rolling). Nominal value is deliberately high: MuJoCo
+# combines the two contacting geoms' friction into a lower effective value, so
+# this ~3.0 stands in for a rubber gripper pad (effective ~1.5). Contact
+# friction is still 待测 -- tune after measuring the real pad material.
+GRIP_FRICTION = "3.0 0.2 0.001"
 
 
 def _col_mesh_name(stem: str, i: int) -> str:

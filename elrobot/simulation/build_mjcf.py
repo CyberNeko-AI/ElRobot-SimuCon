@@ -53,11 +53,13 @@ GRIPPER_COLLISION = {
 
 # --------------------------------------------------------------------------
 # Grasp test block (dynamic free body). Graspable: it collides with the gripper
-# and the floor. Friction is a placeholder (contact friction 待测).
+# and the floor. Friction is a placeholder (contact friction 待测) but raised
+# high enough for a stable PLA-on-PLA grasp.
 # --------------------------------------------------------------------------
 BLOCK_POS = "0 0.30 0.03"            # initial center (m); drops onto the floor
 BLOCK_SIZE = "0.015 0.015 0.015"     # half-extents -> 3 cm cube
 BLOCK_MASS = 0.05                    # kg
+GRIP_FRICTION = "1.2 0.1 0.001"      # (sliding, torsional, rolling)
 
 
 def _col_mesh_name(stem: str, i: int) -> str:
@@ -235,6 +237,7 @@ def main() -> None:
                         f'mesh="{mname}"',
                         f'pos="{pos}"',
                         f'quat="{quat}"',
+                        f'friction="{GRIP_FRICTION}"',
                         f'rgba="{rgba}"',
                     ]
                     body_xml.append(ind + "  " + "<geom " + " ".join(g) + "/>")
@@ -303,7 +306,7 @@ def main() -> None:
     <body name="block" pos="{BLOCK_POS}">
       <freejoint/>
       <geom name="block_geom" type="box" size="{BLOCK_SIZE}" mass="{BLOCK_MASS}"
-            rgba="0.9 0.35 0.2 1" friction="0.8 0.05 0.001"
+            rgba="0.9 0.35 0.2 1" friction="{GRIP_FRICTION}"
             contype="1" conaffinity="1"/>
     </body>
 

@@ -236,7 +236,7 @@ def build_html(joints: list[tuple[str, str, float, float]]) -> str:
   <div id="panel">
     <h3>ElRobot 关节控制</h3>
     <div class="hint">拖动滑杆设定目标角度；右侧为实际角度。<br>
-      夹爪 0°=闭合，最大=张开（两爪自动反向同步）。</div>
+      夹爪 <b>0°=张开</b>，<b>最大角度=闭合</b>（两爪自动反向同步；夹 3cm 方块约需 &gt;53°）。</div>
     {rows_html}
     <button onclick="setHome()">复位到零位 (Home)</button>
     <button onclick="resetView()">复位视角 (View)</button>

@@ -101,5 +101,6 @@ def demo_targets(t: float) -> dict[str, float]:
         "rev_motor_05": 0.30 * math.sin(0.40 * t) * env,
         "rev_motor_06": 0.15 * math.sin(0.30 * t + 0.5) * env,
         "rev_motor_07": 0.40 * math.sin(0.35 * t + 0.8) * env,
-        GRIPPER_JOINT: 0.8 + 0.6 * math.sin(0.6 * t) * env,
+        # gripper gear: 0 rad = fully open, ~2.2 rad = fully closed (URDF mimic)
+        GRIPPER_JOINT: 1.1 + 1.1 * math.sin(0.6 * t) * env,
     }

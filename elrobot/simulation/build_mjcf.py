@@ -35,6 +35,25 @@ SERVO_DAMPING = 0.5     # N·m·s/rad (servo velocity feedback / D-term, 待测)
 JAW_KP = 3000           # stiff rack-pinion coupling for the mimic jaws
 JAW_FORCE = 166.0       # N      (stall torque / 0.0115 m rack-pinion radius)
 
+# --------------------------------------------------------------------------
+# Gripper convex collision decomposition (V-HACD), from pgripper/MuJoCo_collision.
+# Each concave gripper part is split into convex OBJ pieces expressed in the
+# pgripper part-local STL frame (mm). The pos/quat below map that part-local
+# frame onto the elrobot link frame (aligned to the visual STL). Only the
+# COLLISION geoms use these; the visual geoms keep the original STL.
+# --------------------------------------------------------------------------
+# link name -> (piece stem, piece count, pos(m), quat(w x y z))
+GRIPPER_COLLISION = {
+    "Gripper_Base_v1_1":   ("Gripper Base", 88, "0.000846 0.028286 -0.035465",  "0.707107 0 0 0.707107"),
+    "Gripper_Gear_v1_1":   ("Gripper Gear", 70, "0.000068 0.003103 -0.013739",  "0.707107 0 0 -0.707107"),
+    "Gripper_Jaw_01_v1_1": ("Gripper Jaw",  55, "-0.29302 0.346214 0.048671",   "0.707107 0.707107 0 0"),
+    "Gripper_Jaw_02_v1_1": ("Gripper Jaw",  55, "-0.325475 0.303498 -0.032556", "0 0 -0.707107 0.707107"),
+}
+
+
+def _col_mesh_name(stem: str, i: int) -> str:
+    return f'col_{stem.lower().replace(" ", "_")}_{i:03d}'
+
 
 def _vec(attr: str, default: str = "0 0 0") -> str:
     parts = (attr or default).split()
@@ -192,19 +211,36 @@ def main() -> None:
             if el is None:
                 continue
             origin = el.find("origin")
-            mesh_file = el.find("geometry").find("mesh").get("filename")
-            mesh_name = Path(mesh_file).stem
-            meshes.add((mesh_name, Path(mesh_file).name))
             mat = el.find("material")
             rgba = _rgba(mat.get("name")) if mat is not None else "0.7 0.7 0.7 1.0"
-            g = [
-                f'class="{cls}"',
-                'type="mesh"',
-                f'mesh="{mesh_name}"',
-                f'pos="{_vec(origin.get("xyz"))}"',
-                f'rgba="{rgba}"',
-            ]
-            body_xml.append(ind + "  " + "<geom " + " ".join(g) + "/>")
+
+            if tag == "collision" and name in GRIPPER_COLLISION:
+                # convex-decomposed collision geoms for the gripper parts
+                stem, count, pos, quat = GRIPPER_COLLISION[name]
+                for i in range(count):
+                    mname = _col_mesh_name(stem, i)
+                    meshes.add((mname, f"{stem}_parts/{stem}_{i:03d}.obj"))
+                    g = [
+                        f'class="{cls}"',
+                        'type="mesh"',
+                        f'mesh="{mname}"',
+                        f'pos="{pos}"',
+                        f'quat="{quat}"',
+                        f'rgba="{rgba}"',
+                    ]
+                    body_xml.append(ind + "  " + "<geom " + " ".join(g) + "/>")
+            else:
+                mesh_file = el.find("geometry").find("mesh").get("filename")
+                mesh_name = Path(mesh_file).stem
+                meshes.add((mesh_name, Path(mesh_file).name))
+                g = [
+                    f'class="{cls}"',
+                    'type="mesh"',
+                    f'mesh="{mesh_name}"',
+                    f'pos="{_vec(origin.get("xyz"))}"',
+                    f'rgba="{rgba}"',
+                ]
+                body_xml.append(ind + "  " + "<geom " + " ".join(g) + "/>")
 
         for child in children.get(name, []):
             emit_chain(child, depth + 1)

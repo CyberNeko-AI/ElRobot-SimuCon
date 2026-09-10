@@ -29,6 +29,219 @@
     <mesh name="ST3215_7_v1_1" file="ST3215_7_v1_1.stl" scale="0.001 0.001 0.001"/>
     <mesh name="ST3215_8_v1_1" file="ST3215_8_v1_1.stl" scale="0.001 0.001 0.001"/>
     <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_000" file="Gripper Base_parts/Gripper Base_000.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_001" file="Gripper Base_parts/Gripper Base_001.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_002" file="Gripper Base_parts/Gripper Base_002.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_003" file="Gripper Base_parts/Gripper Base_003.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_004" file="Gripper Base_parts/Gripper Base_004.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_005" file="Gripper Base_parts/Gripper Base_005.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_006" file="Gripper Base_parts/Gripper Base_006.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_007" file="Gripper Base_parts/Gripper Base_007.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_008" file="Gripper Base_parts/Gripper Base_008.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_009" file="Gripper Base_parts/Gripper Base_009.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_010" file="Gripper Base_parts/Gripper Base_010.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_011" file="Gripper Base_parts/Gripper Base_011.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_012" file="Gripper Base_parts/Gripper Base_012.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_013" file="Gripper Base_parts/Gripper Base_013.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_014" file="Gripper Base_parts/Gripper Base_014.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_015" file="Gripper Base_parts/Gripper Base_015.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_016" file="Gripper Base_parts/Gripper Base_016.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_017" file="Gripper Base_parts/Gripper Base_017.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_018" file="Gripper Base_parts/Gripper Base_018.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_019" file="Gripper Base_parts/Gripper Base_019.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_020" file="Gripper Base_parts/Gripper Base_020.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_021" file="Gripper Base_parts/Gripper Base_021.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_022" file="Gripper Base_parts/Gripper Base_022.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_023" file="Gripper Base_parts/Gripper Base_023.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_024" file="Gripper Base_parts/Gripper Base_024.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_025" file="Gripper Base_parts/Gripper Base_025.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_026" file="Gripper Base_parts/Gripper Base_026.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_027" file="Gripper Base_parts/Gripper Base_027.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_028" file="Gripper Base_parts/Gripper Base_028.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_029" file="Gripper Base_parts/Gripper Base_029.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_030" file="Gripper Base_parts/Gripper Base_030.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_031" file="Gripper Base_parts/Gripper Base_031.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_032" file="Gripper Base_parts/Gripper Base_032.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_033" file="Gripper Base_parts/Gripper Base_033.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_034" file="Gripper Base_parts/Gripper Base_034.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_035" file="Gripper Base_parts/Gripper Base_035.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_036" file="Gripper Base_parts/Gripper Base_036.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_037" file="Gripper Base_parts/Gripper Base_037.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_038" file="Gripper Base_parts/Gripper Base_038.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_039" file="Gripper Base_parts/Gripper Base_039.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_040" file="Gripper Base_parts/Gripper Base_040.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_041" file="Gripper Base_parts/Gripper Base_041.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_042" file="Gripper Base_parts/Gripper Base_042.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_043" file="Gripper Base_parts/Gripper Base_043.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_044" file="Gripper Base_parts/Gripper Base_044.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_045" file="Gripper Base_parts/Gripper Base_045.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_046" file="Gripper Base_parts/Gripper Base_046.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_047" file="Gripper Base_parts/Gripper Base_047.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_048" file="Gripper Base_parts/Gripper Base_048.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_049" file="Gripper Base_parts/Gripper Base_049.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_050" file="Gripper Base_parts/Gripper Base_050.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_051" file="Gripper Base_parts/Gripper Base_051.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_052" file="Gripper Base_parts/Gripper Base_052.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_053" file="Gripper Base_parts/Gripper Base_053.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_054" file="Gripper Base_parts/Gripper Base_054.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_055" file="Gripper Base_parts/Gripper Base_055.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_056" file="Gripper Base_parts/Gripper Base_056.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_057" file="Gripper Base_parts/Gripper Base_057.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_058" file="Gripper Base_parts/Gripper Base_058.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_059" file="Gripper Base_parts/Gripper Base_059.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_060" file="Gripper Base_parts/Gripper Base_060.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_061" file="Gripper Base_parts/Gripper Base_061.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_062" file="Gripper Base_parts/Gripper Base_062.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_063" file="Gripper Base_parts/Gripper Base_063.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_064" file="Gripper Base_parts/Gripper Base_064.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_065" file="Gripper Base_parts/Gripper Base_065.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_066" file="Gripper Base_parts/Gripper Base_066.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_067" file="Gripper Base_parts/Gripper Base_067.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_068" file="Gripper Base_parts/Gripper Base_068.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_069" file="Gripper Base_parts/Gripper Base_069.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_070" file="Gripper Base_parts/Gripper Base_070.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_071" file="Gripper Base_parts/Gripper Base_071.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_072" file="Gripper Base_parts/Gripper Base_072.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_073" file="Gripper Base_parts/Gripper Base_073.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_074" file="Gripper Base_parts/Gripper Base_074.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_075" file="Gripper Base_parts/Gripper Base_075.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_076" file="Gripper Base_parts/Gripper Base_076.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_077" file="Gripper Base_parts/Gripper Base_077.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_078" file="Gripper Base_parts/Gripper Base_078.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_079" file="Gripper Base_parts/Gripper Base_079.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_080" file="Gripper Base_parts/Gripper Base_080.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_081" file="Gripper Base_parts/Gripper Base_081.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_082" file="Gripper Base_parts/Gripper Base_082.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_083" file="Gripper Base_parts/Gripper Base_083.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_084" file="Gripper Base_parts/Gripper Base_084.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_085" file="Gripper Base_parts/Gripper Base_085.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_086" file="Gripper Base_parts/Gripper Base_086.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_base_087" file="Gripper Base_parts/Gripper Base_087.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_000" file="Gripper Gear_parts/Gripper Gear_000.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_001" file="Gripper Gear_parts/Gripper Gear_001.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_002" file="Gripper Gear_parts/Gripper Gear_002.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_003" file="Gripper Gear_parts/Gripper Gear_003.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_004" file="Gripper Gear_parts/Gripper Gear_004.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_005" file="Gripper Gear_parts/Gripper Gear_005.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_006" file="Gripper Gear_parts/Gripper Gear_006.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_007" file="Gripper Gear_parts/Gripper Gear_007.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_008" file="Gripper Gear_parts/Gripper Gear_008.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_009" file="Gripper Gear_parts/Gripper Gear_009.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_010" file="Gripper Gear_parts/Gripper Gear_010.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_011" file="Gripper Gear_parts/Gripper Gear_011.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_012" file="Gripper Gear_parts/Gripper Gear_012.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_013" file="Gripper Gear_parts/Gripper Gear_013.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_014" file="Gripper Gear_parts/Gripper Gear_014.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_015" file="Gripper Gear_parts/Gripper Gear_015.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_016" file="Gripper Gear_parts/Gripper Gear_016.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_017" file="Gripper Gear_parts/Gripper Gear_017.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_018" file="Gripper Gear_parts/Gripper Gear_018.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_019" file="Gripper Gear_parts/Gripper Gear_019.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_020" file="Gripper Gear_parts/Gripper Gear_020.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_021" file="Gripper Gear_parts/Gripper Gear_021.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_022" file="Gripper Gear_parts/Gripper Gear_022.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_023" file="Gripper Gear_parts/Gripper Gear_023.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_024" file="Gripper Gear_parts/Gripper Gear_024.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_025" file="Gripper Gear_parts/Gripper Gear_025.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_026" file="Gripper Gear_parts/Gripper Gear_026.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_027" file="Gripper Gear_parts/Gripper Gear_027.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_028" file="Gripper Gear_parts/Gripper Gear_028.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_029" file="Gripper Gear_parts/Gripper Gear_029.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_030" file="Gripper Gear_parts/Gripper Gear_030.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_031" file="Gripper Gear_parts/Gripper Gear_031.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_032" file="Gripper Gear_parts/Gripper Gear_032.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_033" file="Gripper Gear_parts/Gripper Gear_033.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_034" file="Gripper Gear_parts/Gripper Gear_034.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_035" file="Gripper Gear_parts/Gripper Gear_035.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_036" file="Gripper Gear_parts/Gripper Gear_036.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_037" file="Gripper Gear_parts/Gripper Gear_037.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_038" file="Gripper Gear_parts/Gripper Gear_038.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_039" file="Gripper Gear_parts/Gripper Gear_039.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_040" file="Gripper Gear_parts/Gripper Gear_040.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_041" file="Gripper Gear_parts/Gripper Gear_041.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_042" file="Gripper Gear_parts/Gripper Gear_042.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_043" file="Gripper Gear_parts/Gripper Gear_043.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_044" file="Gripper Gear_parts/Gripper Gear_044.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_045" file="Gripper Gear_parts/Gripper Gear_045.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_046" file="Gripper Gear_parts/Gripper Gear_046.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_047" file="Gripper Gear_parts/Gripper Gear_047.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_048" file="Gripper Gear_parts/Gripper Gear_048.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_049" file="Gripper Gear_parts/Gripper Gear_049.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_050" file="Gripper Gear_parts/Gripper Gear_050.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_051" file="Gripper Gear_parts/Gripper Gear_051.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_052" file="Gripper Gear_parts/Gripper Gear_052.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_053" file="Gripper Gear_parts/Gripper Gear_053.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_054" file="Gripper Gear_parts/Gripper Gear_054.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_055" file="Gripper Gear_parts/Gripper Gear_055.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_056" file="Gripper Gear_parts/Gripper Gear_056.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_057" file="Gripper Gear_parts/Gripper Gear_057.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_058" file="Gripper Gear_parts/Gripper Gear_058.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_059" file="Gripper Gear_parts/Gripper Gear_059.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_060" file="Gripper Gear_parts/Gripper Gear_060.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_061" file="Gripper Gear_parts/Gripper Gear_061.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_062" file="Gripper Gear_parts/Gripper Gear_062.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_063" file="Gripper Gear_parts/Gripper Gear_063.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_064" file="Gripper Gear_parts/Gripper Gear_064.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_065" file="Gripper Gear_parts/Gripper Gear_065.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_066" file="Gripper Gear_parts/Gripper Gear_066.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_067" file="Gripper Gear_parts/Gripper Gear_067.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_068" file="Gripper Gear_parts/Gripper Gear_068.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_gear_069" file="Gripper Gear_parts/Gripper Gear_069.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_000" file="Gripper Jaw_parts/Gripper Jaw_000.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_001" file="Gripper Jaw_parts/Gripper Jaw_001.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_002" file="Gripper Jaw_parts/Gripper Jaw_002.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_003" file="Gripper Jaw_parts/Gripper Jaw_003.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_004" file="Gripper Jaw_parts/Gripper Jaw_004.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_005" file="Gripper Jaw_parts/Gripper Jaw_005.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_006" file="Gripper Jaw_parts/Gripper Jaw_006.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_007" file="Gripper Jaw_parts/Gripper Jaw_007.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_008" file="Gripper Jaw_parts/Gripper Jaw_008.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_009" file="Gripper Jaw_parts/Gripper Jaw_009.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_010" file="Gripper Jaw_parts/Gripper Jaw_010.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_011" file="Gripper Jaw_parts/Gripper Jaw_011.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_012" file="Gripper Jaw_parts/Gripper Jaw_012.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_013" file="Gripper Jaw_parts/Gripper Jaw_013.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_014" file="Gripper Jaw_parts/Gripper Jaw_014.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_015" file="Gripper Jaw_parts/Gripper Jaw_015.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_016" file="Gripper Jaw_parts/Gripper Jaw_016.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_017" file="Gripper Jaw_parts/Gripper Jaw_017.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_018" file="Gripper Jaw_parts/Gripper Jaw_018.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_019" file="Gripper Jaw_parts/Gripper Jaw_019.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_020" file="Gripper Jaw_parts/Gripper Jaw_020.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_021" file="Gripper Jaw_parts/Gripper Jaw_021.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_022" file="Gripper Jaw_parts/Gripper Jaw_022.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_023" file="Gripper Jaw_parts/Gripper Jaw_023.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_024" file="Gripper Jaw_parts/Gripper Jaw_024.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_025" file="Gripper Jaw_parts/Gripper Jaw_025.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_026" file="Gripper Jaw_parts/Gripper Jaw_026.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_027" file="Gripper Jaw_parts/Gripper Jaw_027.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_028" file="Gripper Jaw_parts/Gripper Jaw_028.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_029" file="Gripper Jaw_parts/Gripper Jaw_029.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_030" file="Gripper Jaw_parts/Gripper Jaw_030.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_031" file="Gripper Jaw_parts/Gripper Jaw_031.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_032" file="Gripper Jaw_parts/Gripper Jaw_032.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_033" file="Gripper Jaw_parts/Gripper Jaw_033.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_034" file="Gripper Jaw_parts/Gripper Jaw_034.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_035" file="Gripper Jaw_parts/Gripper Jaw_035.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_036" file="Gripper Jaw_parts/Gripper Jaw_036.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_037" file="Gripper Jaw_parts/Gripper Jaw_037.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_038" file="Gripper Jaw_parts/Gripper Jaw_038.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_039" file="Gripper Jaw_parts/Gripper Jaw_039.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_040" file="Gripper Jaw_parts/Gripper Jaw_040.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_041" file="Gripper Jaw_parts/Gripper Jaw_041.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_042" file="Gripper Jaw_parts/Gripper Jaw_042.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_043" file="Gripper Jaw_parts/Gripper Jaw_043.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_044" file="Gripper Jaw_parts/Gripper Jaw_044.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_045" file="Gripper Jaw_parts/Gripper Jaw_045.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_046" file="Gripper Jaw_parts/Gripper Jaw_046.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_047" file="Gripper Jaw_parts/Gripper Jaw_047.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_048" file="Gripper Jaw_parts/Gripper Jaw_048.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_049" file="Gripper Jaw_parts/Gripper Jaw_049.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_050" file="Gripper Jaw_parts/Gripper Jaw_050.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_051" file="Gripper Jaw_parts/Gripper Jaw_051.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_052" file="Gripper Jaw_parts/Gripper Jaw_052.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_053" file="Gripper Jaw_parts/Gripper Jaw_053.obj" scale="0.001 0.001 0.001"/>
+    <mesh name="col_gripper_jaw_054" file="Gripper Jaw_parts/Gripper Jaw_054.obj" scale="0.001 0.001 0.001"/>
   </asset>
 
   <default>
@@ -119,7 +332,94 @@
                                 <joint name="rev_motor_07" type="hinge" pos="0 0 0" axis="-0.017144 -0.999812 0.009029" range="-3.2014 2.7336" limited="true" armature="0.02" damping="0.5"/>
                                 <inertial pos="0.000560525 0.03191999 -0.0005946932" mass="0.05309669" fullinertia="2.490918e-05 3.283483e-05 3.50993e-05 0 0 -0"/>
                                 <geom class="visual" type="mesh" mesh="Gripper_Base_v1_1" pos="-0.002925 -0.259566 -0.218892" rgba="0.72 0.72 0.74 1.0"/>
-                                <geom class="collision" type="mesh" mesh="Gripper_Base_v1_1" pos="-0.002925 -0.259566 -0.218892" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_000" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_001" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_002" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_003" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_004" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_005" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_006" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_007" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_008" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_009" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_010" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_011" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_012" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_013" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_014" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_015" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_016" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_017" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_018" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_019" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_020" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_021" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_022" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_023" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_024" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_025" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_026" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_027" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_028" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_029" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_030" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_031" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_032" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_033" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_034" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_035" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_036" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_037" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_038" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_039" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_040" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_041" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_042" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_043" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_044" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_045" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_046" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_047" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_048" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_049" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_050" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_051" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_052" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_053" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_054" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_055" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_056" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_057" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_058" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_059" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_060" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_061" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_062" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_063" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_064" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_065" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_066" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_067" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_068" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_069" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_070" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_071" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_072" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_073" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_074" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_075" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_076" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_077" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_078" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_079" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_080" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_081" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_082" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_083" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_084" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_085" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_086" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                <geom class="collision" type="mesh" mesh="col_gripper_base_087" pos="0.000846 0.028286 -0.035465" quat="0.707107 0 0 0.707107" rgba="0.7 0.7 0.7 1.0"/>
                                 <body name="ST3215_8_v1_1" pos="0.000776 0.045242 -0.000409">
                                   <inertial pos="-0.0005459234 -0.01892611 -0.01220637" mass="0.055" fullinertia="1.379022e-05 1.206645e-05 6.895112e-06 -0 -0 -0"/>
                                   <geom class="visual" type="mesh" mesh="ST3215_8_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.13 0.13 0.14 1.0"/>
@@ -128,20 +428,197 @@
                                     <joint name="rev_motor_08" type="hinge" pos="0 0 0" axis="0.017144 0.999812 -0.009029" range="0 2.2028" limited="true" armature="0.02" damping="0.5"/>
                                     <inertial pos="6.406693e-05 0.003756401 -3.383421e-05" mass="0.002807865" diaginertia="2.807865e-08 2.807865e-08 2.807865e-08"/>
                                     <geom class="visual" type="mesh" mesh="Gripper_Gear_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.72 0.72 0.74 1.0"/>
-                                    <geom class="collision" type="mesh" mesh="Gripper_Gear_v1_1" pos="-0.003701 -0.304808 -0.218483" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_000" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_001" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_002" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_003" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_004" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_005" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_006" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_007" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_008" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_009" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_010" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_011" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_012" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_013" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_014" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_015" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_016" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_017" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_018" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_019" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_020" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_021" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_022" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_023" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_024" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_025" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_026" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_027" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_028" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_029" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_030" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_031" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_032" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_033" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_034" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_035" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_036" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_037" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_038" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_039" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_040" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_041" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_042" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_043" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_044" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_045" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_046" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_047" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_048" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_049" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_050" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_051" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_052" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_053" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_054" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_055" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_056" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_057" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_058" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_059" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_060" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_061" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_062" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_063" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_064" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_065" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_066" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_067" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_068" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                    <geom class="collision" type="mesh" mesh="col_gripper_gear_069" pos="0.000068 0.003103 -0.013739" quat="0.707107 0 0 -0.707107" rgba="0.7 0.7 0.7 1.0"/>
                                   </body>
                                 </body>
                                 <body name="Gripper_Jaw_02_v1_1" pos="0.311734 -0.199648 0.032849">
                                   <joint name="rev_motor_08_1" type="slide" pos="0 0 0" axis="-0.999697 0.0173 0.017525" range="-0.0255 0" limited="true" armature="0.02" damping="0.5"/>
                                   <inertial pos="-0.3386809 0.2625922 -0.03031653" mass="0.01414209" fullinertia="5.660378e-06 4.528302e-06 3.396227e-06 0 -0 0"/>
                                   <geom class="visual" type="mesh" mesh="Gripper_Jaw_02_v1_1" pos="-0.314659 -0.059918 -0.251741" rgba="0.72 0.72 0.74 1.0"/>
-                                  <geom class="collision" type="mesh" mesh="Gripper_Jaw_02_v1_1" pos="-0.314659 -0.059918 -0.251741" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_000" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_001" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_002" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_003" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_004" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_005" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_006" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_007" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_008" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_009" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_010" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_011" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_012" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_013" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_014" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_015" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_016" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_017" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_018" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_019" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_020" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_021" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_022" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_023" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_024" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_025" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_026" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_027" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_028" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_029" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_030" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_031" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_032" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_033" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_034" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_035" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_036" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_037" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_038" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_039" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_040" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_041" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_042" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_043" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_044" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_045" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_046" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_047" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_048" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_049" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_050" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_051" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_052" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_053" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_054" pos="-0.325475 0.303498 -0.032556" quat="0 0 -0.707107 0.707107" rgba="0.7 0.7 0.7 1.0"/>
                                 </body>
                                 <body name="Gripper_Jaw_01_v1_1" pos="0.308573 -0.243367 -0.049391">
                                   <joint name="rev_motor_08_2" type="slide" pos="0 0 0" axis="-0.999697 0.0173 0.017525" range="0 0.0255" limited="true" armature="0.02" damping="0.5"/>
                                   <inertial pos="-0.2794418 0.3053158 0.04627968" mass="0.01414209" fullinertia="5.660379e-06 4.528303e-06 3.396227e-06 -0 -0 -0"/>
                                   <geom class="visual" type="mesh" mesh="Gripper_Jaw_01_v1_1" pos="-0.311498 -0.016199 -0.171401" rgba="0.72 0.72 0.74 1.0"/>
-                                  <geom class="collision" type="mesh" mesh="Gripper_Jaw_01_v1_1" pos="-0.311498 -0.016199 -0.171401" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_000" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_001" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_002" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_003" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_004" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_005" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_006" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_007" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_008" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_009" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_010" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_011" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_012" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_013" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_014" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_015" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_016" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_017" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_018" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_019" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_020" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_021" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_022" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_023" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_024" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_025" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_026" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_027" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_028" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_029" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_030" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_031" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_032" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_033" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_034" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_035" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_036" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_037" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_038" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_039" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_040" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_041" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_042" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_043" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_044" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_045" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_046" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_047" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_048" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_049" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_050" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_051" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_052" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_053" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
+                                  <geom class="collision" type="mesh" mesh="col_gripper_jaw_054" pos="-0.29302 0.346214 0.048671" quat="0.707107 0.707107 0 0" rgba="0.7 0.7 0.7 1.0"/>
                                 </body>
                               </body>
                             </body>

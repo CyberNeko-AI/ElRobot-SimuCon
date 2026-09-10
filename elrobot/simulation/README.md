@@ -76,11 +76,13 @@ mjpython control_ui.py --viewer
   gripper jaws are rack-pinion followers: they mirror the gear's ACTUAL angle.
 - **Masses** — printed parts use PLA at 1.20 g/cm³ (computed from mesh volumes),
   the 8 ST3215 servos use 55 g each; total ≈ 0.85 kg.
-- **Self-collision** — the CAD collision meshes interpenetrate at the assembly
-  pose (deep overlaps between adjacent links), so robot↔robot contact is
-  disabled (`contype="1" conaffinity="0"`) while the arm still collides with the
-  floor. Re-enable only after replacing the collision meshes with non-overlapping
-  convex hulls (planned).
+- **Self-collision / collision geometry** — the gripper parts (base / gear / two
+  jaws) now use convex-decomposed collision meshes (V-HACD OBJ pieces from
+  `pgripper/MuJoCo_collision`, 268 pieces total), aligned to the visual STLs to
+  within ~1 mm. The arm links still use the raw CAD STLs, which interpenetrate
+  at the assembly pose, so robot↔robot contact stays disabled
+  (`contype="1" conaffinity="0"`) until the arm links get the same convex
+  treatment; the arm still collides with the floor.
 - **To-be-measured parameters** — servo PID bandwidth, position stiffness,
   controller deadband, contact friction: see [`MEASUREMENTS.md`](MEASUREMENTS.md).
 - **Meshes** — URDF meshes are in millimetres; the MJCF scales them by 0.001.

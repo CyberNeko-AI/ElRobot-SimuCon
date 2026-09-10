@@ -51,6 +51,15 @@ GRIPPER_COLLISION = {
 }
 
 
+# --------------------------------------------------------------------------
+# Grasp test block (dynamic free body). Graspable: it collides with the gripper
+# and the floor. Friction is a placeholder (contact friction 待测).
+# --------------------------------------------------------------------------
+BLOCK_POS = "0 0.30 0.03"            # initial center (m); drops onto the floor
+BLOCK_SIZE = "0.015 0.015 0.015"     # half-extents -> 3 cm cube
+BLOCK_MASS = 0.05                    # kg
+
+
 def _col_mesh_name(stem: str, i: int) -> str:
     return f'col_{stem.lower().replace(" ", "_")}_{i:03d}'
 
@@ -289,6 +298,14 @@ def main() -> None:
 
     <geom name="floor" type="plane" size="1.5 1.5 0.05" pos="0 0 0"
           material="floor" contype="0" conaffinity="1"/>
+
+    <!-- Graspable test block (dynamic free body) -->
+    <body name="block" pos="{BLOCK_POS}">
+      <freejoint/>
+      <geom name="block_geom" type="box" size="{BLOCK_SIZE}" mass="{BLOCK_MASS}"
+            rgba="0.9 0.35 0.2 1" friction="0.8 0.05 0.001"
+            contype="1" conaffinity="1"/>
+    </body>
 
     <!-- ElRobot follower arm; base_link is mounted at z=BASE_HEIGHT. -->
 {chr(10).join(body_xml)}

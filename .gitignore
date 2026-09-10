@@ -7,6 +7,12 @@ venv/
 # macOS
 .DS_Store
 
+# Editor
+.vscode/
+
 # Rust
 target/
 Cargo.lock
+
+# Compiled Python extensions (PyO3/maturin build artifacts)
+*.so

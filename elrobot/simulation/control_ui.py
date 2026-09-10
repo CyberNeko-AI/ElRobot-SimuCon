@@ -72,6 +72,7 @@ class SharedState:
         self.frame_counter = 0
         self.cam = {"azimuth": -35.0, "elevation": -16.0,
                     "distance": 1.05, "lookat": [0.0, 0.14, 0.13]}
+        self.reset_block = False                              # request to reset the test block
 
 
 def make_handler(state: SharedState, html: str, joint_names: list[str]):
@@ -114,6 +115,15 @@ def make_handler(state: SharedState, html: str, joint_names: list[str]):
         # -- POST -----------------------------------------------------------
         def do_POST(self) -> None:  # noqa: N802
             path = self.path.split("?")[0]
+
+            if path == "/reset_block":
+                with state.lock:
+                    state.reset_block = True
+                self.send_response(200)
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return
+
             length = int(self.headers.get("Content-Length", 0))
             raw = self.rfile.read(length)
             try:
@@ -230,6 +240,7 @@ def build_html(joints: list[tuple[str, str, float, float]]) -> str:
     {rows_html}
     <button onclick="setHome()">复位到零位 (Home)</button>
     <button onclick="resetView()">复位视角 (View)</button>
+    <button onclick="resetBlock()">重置方块 (Block)</button>
   </div>
   <div id="view">
     <div id="status">拖拽旋转 · 滚轮缩放</div>
@@ -265,6 +276,9 @@ function sendCam() {{
   }});
 }}
 function resetView() {{ cam = {{azimuth: -35, elevation: -16, distance: 1.05}}; sendCam(); }}
+function resetBlock() {{
+  fetch("/reset_block", {{method: "POST"}});
+}}
 
 for (const j of JOINTS)
   document.getElementById("t_" + j.name).addEventListener("input", send);
@@ -333,6 +347,17 @@ def main() -> None:
     mujoco.mj_forward(model, data)
     servo = controller.ServoController(model)
 
+    # locate the grasp test block's free joint (for the reset button)
+    block_jid = None
+    for i in range(model.njnt):
+        if model.body(model.jnt_bodyid[i]).name == "block":
+            block_jid = i
+            break
+    block_qadr = int(model.jnt_qposadr[block_jid]) if block_jid is not None else None
+    block_dadr = int(model.jnt_dofadr[block_jid]) if block_jid is not None else None
+    block_qpos0 = np.array(model.qpos0[block_qadr:block_qadr + 7]).copy() \
+        if block_qadr is not None else None
+
     all_joints = ARM_JOINTS + [GRIPPER]
     joint_names = [n for n, _ in all_joints]
 
@@ -382,6 +407,14 @@ def main() -> None:
             with state.lock:
                 targets = dict(state.targets)
                 c = dict(state.cam)
+                do_reset_block = state.reset_block
+                if do_reset_block:
+                    state.reset_block = False
+
+            if do_reset_block and block_qadr is not None:
+                data.qpos[block_qadr:block_qadr + 7] = block_qpos0
+                data.qvel[block_dadr:block_dadr + 6] = 0
+                mujoco.mj_forward(model, data)
 
             target_rad = {name: math.radians(targets[name])
                           for name, _ in ARM_JOINTS}

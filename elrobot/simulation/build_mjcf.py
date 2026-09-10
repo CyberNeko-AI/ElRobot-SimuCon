@@ -65,6 +65,12 @@ BLOCK_MASS = 0.05                    # kg
 # friction is still 待测 -- tune after measuring the real pad material.
 GRIP_FRICTION = "3.0 0.2 0.001"
 
+# Soft (compliant) contact for the rubber pad / object deformation:
+#   - solref: longer time constant -> softer normal response
+#   - margin: contact activates this far before penetration (pad compliance)
+SOFT_SOLREF = "0.05 1"
+SOFT_MARGIN = "0.002"
+
 
 def _col_mesh_name(stem: str, i: int) -> str:
     return f'col_{stem.lower().replace(" ", "_")}_{i:03d}'
@@ -242,6 +248,8 @@ def main() -> None:
                         f'pos="{pos}"',
                         f'quat="{quat}"',
                         f'friction="{GRIP_FRICTION}"',
+                        f'solref="{SOFT_SOLREF}"',
+                        f'margin="{SOFT_MARGIN}"',
                         f'rgba="{rgba}"',
                     ]
                     body_xml.append(ind + "  " + "<geom " + " ".join(g) + "/>")
@@ -311,6 +319,7 @@ def main() -> None:
       <freejoint/>
       <geom name="block_geom" type="box" size="{BLOCK_SIZE}" mass="{BLOCK_MASS}"
             rgba="0.9 0.35 0.2 1" friction="{GRIP_FRICTION}"
+            solref="{SOFT_SOLREF}" margin="{SOFT_MARGIN}"
             contype="1" conaffinity="1"/>
     </body>
 

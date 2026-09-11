@@ -79,10 +79,15 @@ mjpython control_ui.py --viewer
 - **Grasp test block** — a 3 cm / 50 g free cube (`BLOCK_POS/SIZE/MASS`) sits in
   front of the arm; it collides with the gripper and the floor. Its friction
   plus the gripper jaws' friction is `GRIP_FRICTION = 3.0` (nominal), which
-  stands in for a rubber gripper pad: MuJoCo combines the two contacting geoms'
-  friction into a lower effective value (~1.5), and the real pad material is
-  still to be measured. The web UI has a **重置方块 (Block)** button that returns
-  the cube to its initial pose after it is thrown.
+  stands in for a rubber gripper pad. MuJoCo selects the larger coefficient
+  from same-priority contacting geoms; it does not average them. The real pad
+  material is still to be measured. The web UI has a **重置方块 (Block)** button
+  that returns the cube to its initial pose after it is thrown.
+- **Contact solver** — grasp contacts use an elliptic friction cone,
+  `impratio=10`, and 10 no-slip iterations. The convex decomposition creates
+  many simultaneous finger contacts; these settings suppress the residual
+  tangential velocity that otherwise appears as slow grasp creep, while the
+  cube remains attached only by physical contact and friction.
 - **Self-collision / collision geometry** — the gripper parts (base / gear / two
   jaws) now use convex-decomposed collision meshes (V-HACD OBJ pieces from
   `pgripper/MuJoCo_collision`, 268 pieces total), aligned to the visual STLs to

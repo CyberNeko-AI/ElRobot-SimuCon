@@ -59,11 +59,21 @@ GRIPPER_COLLISION = {
 BLOCK_POS = "0 0.30 0.03"            # initial center (m); drops onto the floor
 BLOCK_SIZE = "0.015 0.015 0.015"     # half-extents -> 3 cm cube
 BLOCK_MASS = 0.05                    # kg
-# (sliding, torsional, rolling). Nominal value is deliberately high: MuJoCo
-# combines the two contacting geoms' friction into a lower effective value, so
-# this ~3.0 stands in for a rubber gripper pad (effective ~1.5). Contact
-# friction is still 待测 -- tune after measuring the real pad material.
+# (sliding, torsional, rolling). The sliding value is deliberately high to
+# represent a rubber gripper pad. MuJoCo takes the larger coefficient from two
+# same-priority contacting geoms; it does not average them. Contact friction is
+# still 待测 -- tune after measuring the real pad material.
 GRIP_FRICTION = "3.0 0.2 0.001"
+
+# A grasp contains dozens of contacts because each finger is represented by a
+# convex decomposition. MuJoCo's default pyramidal friction cone leaves a
+# small residual tangential velocity in this highly redundant contact set,
+# which shows up as a cube slowly creeping out of an otherwise strong grasp.
+# An elliptic cone represents Coulomb friction directly; a larger friction to
+# normal impedance ratio and the noslip post-processor remove the remaining
+# solver drift without making the cube rigidly attached to the gripper.
+CONTACT_IMPRATIO = 10
+NOSLIP_ITERATIONS = 10
 
 
 def _col_mesh_name(stem: str, i: int) -> str:
@@ -272,7 +282,9 @@ def main() -> None:
 
     xml = f"""<mujoco model="elrobot_follower">
   <compiler angle="radian" meshdir="assets" autolimits="true"/>
-  <option gravity="0 0 -9.81" timestep="0.002" integrator="implicit"/>
+  <option gravity="0 0 -9.81" timestep="0.002" integrator="implicit"
+          cone="elliptic" impratio="{CONTACT_IMPRATIO}"
+          noslip_iterations="{NOSLIP_ITERATIONS}"/>
 
   <visual>
     <global offwidth="1280" offheight="960"/>

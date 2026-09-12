@@ -5,7 +5,8 @@
           noslip_iterations="10"/>
 
   <visual>
-    <global offwidth="1280" offheight="960"/>
+    <!-- High-resolution offscreen buffer for dynamically sized web rendering. -->
+    <global offwidth="3840" offheight="2160"/>
   </visual>
 
   <asset>

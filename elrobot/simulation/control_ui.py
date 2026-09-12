@@ -3,7 +3,7 @@
 
 Serves a browser page with one slider per motor joint plus a live 3-D view of
 the arm. The 3-D view is a smooth MJPEG stream (JPEG frames over
-``multipart/x-mixed-replace``) and supports mouse orbit/zoom.
+``multipart/x-mixed-replace``) and supports mouse orbit/pan/zoom.
 
 Usage:
     python control_ui.py                # browser UI (opens automatically)
@@ -15,6 +15,7 @@ Usage:
 Then open http://127.0.0.1:<port> in any browser if it didn't open by itself.
 Controls in the browser:
     left-drag : orbit the camera
+    right-drag: pan the camera view
     scroll    : zoom
 """
 from __future__ import annotations
@@ -64,7 +65,8 @@ def _jpeg_bytes(rgb: np.ndarray, quality: int = JPEG_QUALITY) -> bytes:
 class SharedState:
     """Thread-safe bridge between the HTTP server and the sim/render loop."""
 
-    def __init__(self, joint_names: list[str]) -> None:
+    def __init__(self, joint_names: list[str], width: int = 960,
+                 height: int = 720) -> None:
         self.lock = threading.Lock()
         self.targets = {n: 0.0 for n in joint_names}          # degrees
         self.actual = {n: 0.0 for n in joint_names}           # degrees
@@ -72,6 +74,8 @@ class SharedState:
         self.frame_counter = 0
         self.cam = {"azimuth": -35.0, "elevation": -16.0,
                     "distance": 1.05, "lookat": [0.0, 0.14, 0.13]}
+        self.viewport = {"width": max(160, min(3840, int(width))),
+                         "height": max(120, min(2160, int(height)))}
         self.reset_block = False                              # request to reset the test block
 
 
@@ -109,6 +113,7 @@ def make_handler(state: SharedState, html: str, joint_names: list[str]):
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 self.wfile.write(body)
+
             else:
                 self.send_error(404)
 
@@ -148,6 +153,16 @@ def make_handler(state: SharedState, html: str, joint_names: list[str]):
                         c["distance"] = float(data["distance"])
                     if "lookat" in data and len(data["lookat"]) == 3:
                         c["lookat"] = [float(x) for x in data["lookat"]]
+            elif path == "/viewport":
+                # Keep browser-provided sizes bounded to avoid pathological allocations.
+                try:
+                    width = max(160, min(3840, int(data["width"])))
+                    height = max(120, min(2160, int(data["height"])))
+                except (KeyError, TypeError, ValueError):
+                    self.send_error(400)
+                    return
+                with state.lock:
+                    state.viewport = {"width": width, "height": height}
             else:
                 self.send_error(404)
                 return
@@ -224,7 +239,7 @@ def build_html(joints: list[tuple[str, str, float, float]]) -> str:
   button {{ margin: 4px 6px 0 0; padding: 6px 14px; }}
   #view {{ flex: 1; display: flex; flex-direction: column; align-items: center;
            justify-content: center; background: #15171a; position: relative; }}
-  #view img {{ max-width: 100%; max-height: 100%; cursor: grab;
+  #view img {{ width: 100%; height: 100%; object-fit: contain; cursor: grab;
               -webkit-user-drag: none; user-drag: none;
               -webkit-user-select: none; user-select: none; }}
   #view img.dragging {{ cursor: grabbing; }}
@@ -243,7 +258,7 @@ def build_html(joints: list[tuple[str, str, float, float]]) -> str:
     <button onclick="resetBlock()">重置方块 (Block)</button>
   </div>
   <div id="view">
-    <div id="status">拖拽旋转 · 滚轮缩放</div>
+    <div id="status">左键旋转 · 右键平移 · 滚轮缩放</div>
     <img id="frame" src="/stream" alt="arm" draggable="false">
   </div>
 <script>
@@ -283,26 +298,61 @@ function resetBlock() {{
 for (const j of JOINTS)
   document.getElementById("t_" + j.name).addEventListener("input", send);
 
-// --- mouse orbit / zoom on the streamed image ---
+// --- viewport sync and mouse orbit / pan / zoom on the streamed image ---
 const img = document.getElementById("frame");
-let dragging = false, lastX = 0, lastY = 0;
-// disable the browser's native image drag-and-drop so left-drag orbits instead
+const view = document.getElementById("view");
+let dragging = false, dragButton = 0, lastX = 0, lastY = 0;
+let resizeTimer = 0;
+function sendViewport() {{
+  const rect = view.getBoundingClientRect();
+  const width = Math.max(160, Math.round(rect.width));
+  const height = Math.max(120, Math.round(rect.height));
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => fetch("/viewport", {{
+    method: "POST", headers: {{"Content-Type": "application/json"}},
+    body: JSON.stringify({{width, height}})
+  }}).catch(() => {{}}), 80);
+}}
+new ResizeObserver(sendViewport).observe(view);
+window.addEventListener("resize", sendViewport);
+sendViewport();
+
+// Disable the browser's native image drag-and-drop and context menu.
 img.addEventListener("dragstart", e => e.preventDefault());
+img.addEventListener("contextmenu", e => e.preventDefault());
 img.addEventListener("mousedown", e => {{
-  dragging = true; lastX = e.clientX; lastY = e.clientY;
+  if (e.button !== 0 && e.button !== 2) return;
+  dragging = true; dragButton = e.button;
+  lastX = e.clientX; lastY = e.clientY;
   img.classList.add("dragging");
 }});
 window.addEventListener("mousemove", e => {{
   if (!dragging) return;
   const dx = e.clientX - lastX, dy = e.clientY - lastY;
   lastX = e.clientX; lastY = e.clientY;
-  cam.azimuth -= dx * 0.4;
-  cam.elevation -= dy * 0.4;
-  cam.elevation = Math.max(-89, Math.min(89, cam.elevation));
+  if (dragButton === 0) {{
+    cam.azimuth -= dx * 0.4;
+    cam.elevation -= dy * 0.4;
+    cam.elevation = Math.max(-89, Math.min(89, cam.elevation));
+  }} else {{
+    const az = cam.azimuth * Math.PI / 180;
+    const el = cam.elevation * Math.PI / 180;
+    const forward = [Math.cos(el) * Math.cos(az), Math.cos(el) * Math.sin(az), Math.sin(el)];
+    const right = [Math.sin(az), -Math.cos(az), 0];
+    const up = [
+      right[1] * forward[2] - right[2] * forward[1],
+      right[2] * forward[0] - right[0] * forward[2],
+      right[0] * forward[1] - right[1] * forward[0]
+    ];
+    const scale = cam.distance * 0.0025;
+    cam.lookat[0] += scale * (-dx * right[0] + dy * up[0]);
+    cam.lookat[1] += scale * (-dx * right[1] + dy * up[1]);
+    cam.lookat[2] += scale * (-dx * right[2] + dy * up[2]);
+  }}
   sendCam();
 }});
 window.addEventListener("mouseup", () => {{
-  dragging = false; img.classList.remove("dragging");
+  dragging = false; dragButton = 0; img.classList.remove("dragging");
 }});
 img.addEventListener("wheel", e => {{
   e.preventDefault();
@@ -334,8 +384,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Web joint control UI")
     parser.add_argument("--port", type=int, default=8080)
     parser.add_argument("--no-browser", action="store_true")
-    parser.add_argument("--width", type=int, default=960)
-    parser.add_argument("--height", type=int, default=720)
+    parser.add_argument("--width", type=int, default=1600)
+    parser.add_argument("--height", type=int, default=1200)
     parser.add_argument("--fps", type=float, default=30.0,
                         help="target stream frame rate")
     parser.add_argument("--viewer", action="store_true",
@@ -346,6 +396,13 @@ def main() -> None:
     data = mujoco.MjData(model)
     mujoco.mj_forward(model, data)
     servo = controller.ServoController(model)
+
+    # MuJoCo's offscreen framebuffer (configured in the XML) is an upper
+    # bound for Renderer dimensions. Keep one fixed frame size for the MJPEG
+    # connection: changing JPEG dimensions mid-stream makes some browsers
+    # stop decoding after the first frame. CSS still scales it to the page.
+    framebuffer_width = int(model.vis.global_.offwidth)
+    framebuffer_height = int(model.vis.global_.offheight)
 
     # locate the grasp test block's free joint (for the reset button)
     block_jid = None
@@ -368,7 +425,9 @@ def main() -> None:
                                   math.degrees(float(j.range[0])),
                                   math.degrees(float(j.range[1]))))
 
-    state = SharedState(joint_names)
+    state = SharedState(joint_names,
+                        min(args.width, framebuffer_width),
+                        min(args.height, framebuffer_height))
     html = build_html(joints_with_range)
     handler = make_handler(state, html, joint_names)
 
@@ -383,7 +442,9 @@ def main() -> None:
         except Exception:
             pass
 
-    renderer = mujoco.Renderer(model, height=args.height, width=args.width)
+    render_size = (max(1, min(framebuffer_width, args.width)),
+                   max(1, min(framebuffer_height, args.height)))
+    renderer = mujoco.Renderer(model, height=render_size[1], width=render_size[0])
     cam = mujoco.MjvCamera()
     cam.type = mujoco.mjtCamera.mjCAMERA_FREE
 
@@ -454,6 +515,10 @@ def main() -> None:
         print("\n[control_ui] interrupted")
     finally:
         server.shutdown()
+        try:
+            renderer.close()
+        except AttributeError:
+            pass
         if viewer is not None:
             viewer.close()
 
